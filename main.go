@@ -8,7 +8,12 @@ import (
 
 func main() {
 	beego.BConfig.WebConfig.DirectoryIndex = true
-	beego.BConfig.WebConfig.StaticDir["/swagger"] = "swagger"
+	// 根据环境判断是否走swagger 接口
+	runmode, _ := beego.AppConfig.String("runmode")
+	if runmode == "dev" {
+		beego.BConfig.WebConfig.StaticDir["/swagger"] = "swagger"
+	}
+
 	beego.Run("127.0.0.1:8080")
 
 }
