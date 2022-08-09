@@ -7,6 +7,7 @@ import (
 )
 
 func main() {
+
 	// 根据环境判断是否走swagger 接口
 	runmode, _ := beego.AppConfig.String("runmode")
 	if runmode == "dev" {
